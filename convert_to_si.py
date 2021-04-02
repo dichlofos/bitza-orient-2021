@@ -2,8 +2,8 @@
 # coding: utf-8
 
 """
-Translate SportIduino station output format into Ctrl-F-friendly format
-that is easy to edit via text editor (manual check points insertion/etc.
+Translate pretty-printed file back to SportIduino station output format
+after manual editing.
 
 Author: Mikhail Veltishchev <dichlofos-mv@yandex.ru>
 """
@@ -11,10 +11,17 @@ Author: Mikhail Veltishchev <dichlofos-mv@yandex.ru>
 
 from __future__ import print_function
 
+import re
 import sys
 import json
+import time
 
 from datetime import datetime
+
+
+def _decode(s):
+    # assume 0 is not a valid station/punch number
+    return int(re.replace(r'^0+', '', s.replace('n', '')))
 
 
 def main():
@@ -30,22 +37,20 @@ def main():
     dump = json.loads(contents)
 
     for item in dump:
-        print("Card: {}".format(item['card_number']))
-        item['card_number'] = '{:04d}n'.format(item['card_number'])
+        card_number = str(item['card_number'])
+        if 'n' not in card_number:
+            print('This file is not an pretty-printed one, please check your input')
+            sys.exit(1)
+
+        card_number = _decode(card_number)
+        item['card_number'] = card_number
+        print("Card: {}".format(card_number))
         for punch in item['punches']:
-            punch_id = punch[0]
-            punch_ts = int(punch[1])
-            print(
-                "    {:04d}: {}".format(
-                    punch_id,
-                    datetime.utcfromtimestamp(punch_ts).strftime('%Y-%m-%d %H:%M:%S'),
-                )
-            )
-            punch[0] = '{:04d}'.format(punch_id)
-            punch[1] = datetime.utcfromtimestamp(punch_ts).strftime('%Y-%m-%d %H:%M:%S')
+            punch[0] = _decode(punch[0])
+            punch[1] = time.mktime(datetime.strptime(punch[1], '%Y-%m-%d %H:%M:%S').timetuple())
 
     if file_name is not None:
-        output_file_name = '{}_pretty.json'.format(file_name.replace('.json', ''))
+        output_file_name = '{}_machine.json'.format(file_name.replace('_pretty.json', ''))
         with open(output_file_name, 'w') as out:
             out.write(json.dumps(dump, indent=4, sort_keys=True))
 
