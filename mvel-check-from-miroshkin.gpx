@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<gpx xmlns="http://www.topografix.com/GPX/1/1" creator="http://nakarte.me" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd" version="1.1">
+	<wpt lat="55.606659" lon="37.563996">
+		<name>003</name>
+	</wpt>
+	<wpt lat="55.605973" lon="37.570541">
+		<name>009</name>
+	</wpt>
+	<wpt lat="55.605243" lon="37.571807">
+		<name>010</name>
+	</wpt>
+	<wpt lat="55.603934" lon="37.577042">
+		<name>014</name>
+	</wpt>
+	<wpt lat="55.604321" lon="37.572858">
+		<name>016</name>
+	</wpt>
+	<wpt lat="55.604535" lon="37.569961">
+		<name>020</name>
+	</wpt>
+	<wpt lat="55.600351" lon="37.575841">
+		<name>037</name>
+	</wpt>
+	<wpt lat="55.599621" lon="37.577557">
+		<name>038</name>
+	</wpt>
+	<wpt lat="55.598999" lon="37.573373">
+		<name>039</name>
+	</wpt>
+	<wpt lat="55.596660" lon="37.570927">
+		<name>043</name>
+	</wpt>
+	<wpt lat="55.596338" lon="37.578115">
+		<name>045</name>
+	</wpt>
+	<wpt lat="55.594965" lon="37.567494">
+		<name>047</name>
+	</wpt>
+	<wpt lat="55.593871" lon="37.566850">
+		<name>053</name>
+	</wpt>
+	<wpt lat="55.592133" lon="37.572965">
+		<name>055</name>
+	</wpt>
+	<wpt lat="55.598784" lon="37.575927">
+		<name>Старт</name>
+	</wpt>
+
+
+</gpx>
