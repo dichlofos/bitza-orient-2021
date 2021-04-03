@@ -21,7 +21,7 @@ from datetime import datetime
 
 def _decode(s):
     # assume 0 is not a valid station/punch number
-    return int(re.replace(r'^0+', '', s.replace('n', '')))
+    return int(re.sub(r'^0+', '', s.replace('n', '')))
 
 
 def main():
