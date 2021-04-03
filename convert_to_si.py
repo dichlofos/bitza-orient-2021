@@ -14,7 +14,7 @@ from __future__ import print_function
 import re
 import sys
 import json
-import time
+import calendar
 
 from datetime import datetime
 
@@ -47,7 +47,7 @@ def main():
         print("Card: {}".format(card_number))
         for punch in item['punches']:
             punch[0] = _decode(punch[0])
-            punch[1] = time.mktime(datetime.strptime(punch[1], '%Y-%m-%d %H:%M:%S').timetuple())
+            punch[1] = calendar.timegm(datetime.strptime(punch[1], '%Y-%m-%d %H:%M:%S').timetuple())
 
     if file_name is not None:
         output_file_name = '{}_machine.json'.format(file_name.replace('_pretty.json', ''))
